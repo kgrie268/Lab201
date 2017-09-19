@@ -26,6 +26,8 @@ public class AgeCalculatorServlet extends HttpServlet {
         // retrieves age from the form
         String age = request.getParameter("age");
         String button = request.getParameter("button");
+        
+        //request.setAttribute("age2", age);
         // validation
         if(button != null){
         if (age == null || age.isEmpty()) {
@@ -34,20 +36,25 @@ public class AgeCalculatorServlet extends HttpServlet {
             
 
             // forward the request back to index.jsp
-            getServletContext().getRequestDispatcher("/WEB-INF/AgeCalculator.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/WEB-INF/ageCalculator.jsp").forward(request, response);
             // stop other execution of code
             return;
         }
-        
+        try {
         int numAge= Integer.parseInt(age);
-        if(Character.isDigit(numAge)){
-           request.setAttribute("yourAge", numAge+1); 
-        }
-        else{
-        request.setAttribute("errorMessage", "You must enter a number");
-        }
-        }
+        //String regex = "^[0-9]";
         
+           request.setAttribute("yourAge", "Your age next birthday will be " +(numAge+1)); 
+        }
+        catch(Exception e){
+        request.setAttribute("errorMessage", "You must enter a number");
+        
+        
+        }
+        }
+        getServletContext().getRequestDispatcher("/WEB-INF/ageCalculator.jsp").forward(request, response);
+            // stop other execution of code
+           
     }
 
     /**

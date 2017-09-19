@@ -17,10 +17,10 @@
         <form name= "ageCal" method="get">
             <h1>Age next birthday</h1>
             Enter your current age:   
-            <input type ="text" name="age" >     
+            <input type ="text" name="age" value="${age2}" >     
             <button id="val" class="val" name="button">Age next birthday</button>
             <br><br>
-        ${errorMessage}
+        
        
                 
         </form> 
